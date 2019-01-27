@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import Home from './components/Home/Home'
+import AuthorList from './components/authors/AuthorList'
+import AuthorCreate from './components/authors/AuthorCreate'
+import CategoryList from './components/categories/CategoryList'
+import CategoryCreate from './components/categories/CategoryCreate'
+import EditorialList from './components/editorials/EditorialList'
+import EditorialCreate from './components/editorials/EditorialCreate'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <BrowserRouter>
+        <div className="App">
+          <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route exact path='/authors' component={AuthorList}/>
+            <Route exact path='/authors/create' component={AuthorCreate}/>
+            <Route exact path='/categories' component={CategoryList}/>
+            <Route exact path='/categories/create' component={CategoryCreate}/>
+            <Route exact path='/editorials' component={EditorialList}/>
+            <Route exact path='/editorials/create' component={EditorialCreate}/>
+          </Switch>
+        </div>
+      </BrowserRouter>
+    )
   }
 }
 
