@@ -7,6 +7,8 @@ import CategoryList from './components/categories/CategoryList'
 import CategoryCreate from './components/categories/CategoryCreate'
 import EditorialList from './components/editorials/EditorialList'
 import EditorialCreate from './components/editorials/EditorialCreate'
+import BookList from './components/books/BookList'
+import BookCreate from './components/books/BookCreate'
 
 class App extends Component {
   render() {
@@ -21,6 +23,8 @@ class App extends Component {
             <Route exact path='/categories/create' component={CategoryCreate}/>
             <Route exact path='/editorials' component={EditorialList}/>
             <Route exact path='/editorials/create' component={EditorialCreate}/>
+            <Route exact path='/books' component={BookList}/>
+            <Route exact path='/books/create' component={BookCreate}/>
           </Switch>
         </div>
       </BrowserRouter>

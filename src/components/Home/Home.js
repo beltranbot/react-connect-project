@@ -11,8 +11,15 @@ class Home extends Component {
     let linksList = [
       <li key="authors">
         <Link to={`/authors`}>Autores</Link>
-        <Link to={`/categories`}>Categorías</Link>
-        <Link to={`/editorials`}>Editoriales</Link>
+      </li>,
+      <li key="categories">
+        <Link to={"/categories"}>Categorías</Link>
+      </li>,
+      <li key="editorials">
+        <Link to={"/editorials"}>Editoriales</Link>
+      </li>,
+      <li key="books">
+        <Link to={"/books"}>Libros</Link>
       </li>,
     ]
 

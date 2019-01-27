@@ -10,9 +10,6 @@ class AuthorList extends Component {
   }
   
   async componentDidMount() {
-    // const proxy = 'https://cors-anywhere.herokuapp.com/'
-    // let url = 'https://rocky-reaches-72412.herokuapp.com/authors.json'
-    // let response = await axios.get(proxy + url)
     let response = await axios.get(authors_json_url)
     let authors = response.data
     this.setState({authors})

@@ -28,7 +28,7 @@ class CategoryList extends Component {
     return (
       <div className="container">
         <div>
-          <Link to={'/categories/create'}>Nueva Category</Link>
+          <Link to={'/categories/create'}>Nueva Categoría</Link>
         </div>
         <table>
           <thead>
