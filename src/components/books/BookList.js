@@ -195,7 +195,7 @@ class BookList extends Component {
 
         return (
           <tr key={book.id}>
-            <td>{book.id}</td>
+            <td><Link to={`books/${book.id}`}>{book.id}</Link></td>
             <td>{book.titulo}</td>
             <td>{book.subtitulo}</td>
             <td>{book.fecha_publicacion}</td>

@@ -9,6 +9,7 @@ import EditorialList from './components/editorials/EditorialList'
 import EditorialCreate from './components/editorials/EditorialCreate'
 import BookList from './components/books/BookList'
 import BookCreate from './components/books/BookCreate'
+import BookDetail from './components/books/BookDetail'
 
 import Navbar from './components/layout/Navbar'
 
@@ -28,6 +29,7 @@ class App extends Component {
             <Route exact path='/editorials/create' component={EditorialCreate}/>
             <Route exact path='/books' component={BookList}/>
             <Route exact path='/books/create' component={BookCreate}/>
+            <Route exact path='/books/:id' component={BookDetail}/>
           </Switch>
         </div>
       </BrowserRouter>
