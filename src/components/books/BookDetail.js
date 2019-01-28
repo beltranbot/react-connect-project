@@ -99,7 +99,7 @@ class BookDetail extends Component {
 
           <div className="card" style={style}>
             <Link to='/books' className="btn btn-secondary">Regresar</Link>
-            <img className="card-img-top" src={imagen} alt="Card cap" />
+            <img className="card-img-top" src={imagen} alt="Sin imagen" />
             <div className="card-body">
               <h5 className="card-title">{titulo}</h5>
               <p className="card-text">{subtitulo}</p>

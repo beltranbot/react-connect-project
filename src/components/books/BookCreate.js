@@ -21,7 +21,7 @@ class BookCreate extends Component {
     categorias: [],
     categorias_list: [],
     editorials_list: [],
-    editorial: null,
+    editorial: 1,
   }
 
   async componentDidMount() {
