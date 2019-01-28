@@ -6,6 +6,7 @@ import {
   categories_json_url,
   editorials_json_url,
 } from '../../config'
+import { Link } from 'react-router-dom'
 
 class BookCreate extends Component {
 
@@ -16,10 +17,10 @@ class BookCreate extends Component {
     descripcion: '',
     imagen: '',
     autores: [],
-    autores_list:[],
+    autores_list: [],
     categorias: [],
-    categorias_list:[],
-    editorials_list:[],
+    categorias_list: [],
+    editorials_list: [],
     editorial: null,
   }
 
@@ -56,7 +57,7 @@ class BookCreate extends Component {
       this.setState({
         [e.target.id]: e.target.value
       })
-    } 
+    }
   }
 
   validateData = (data) => {
@@ -125,7 +126,7 @@ class BookCreate extends Component {
     }
   }
 
-  render () {
+  render() {
     let {
       autores_list,
       categorias_list,
@@ -161,71 +162,105 @@ class BookCreate extends Component {
         )
       })
     }
-    
+
     return (
-      <div className='container'>
-        <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Crear Nuevo Libro</h5>
-          <div className="input-field">
-            <label htmlFor="titulo">Titulo *</label>
-            <input type="text"
-              id="titulo"
-              onChange={this.handleChange}
-            />
+      <main role="main" className="container">
+        <div classNameName="jumbotron">
+          <div className="card border-primary mb-3" >
+            <div className="card-header">
+              <Link to="/books">Volver</Link>
+              <h4>Crear Nuevo libro</h4>
+            </div>
+            <div className="card-body">
+              <form className="white" onSubmit={this.handleSubmit}>
+                <div className="form-row">
+                  <div className="col">
+                    <input type="file" className="custom-file-input"
+                      id="imagen" name="imagen"
+                      accept="image/png, image/jpeg"
+                      onChange={this.handleChange}
+                    />
+                    <label className="custom-file-label" htmlFor="imagen">Imagen</label>
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="col">
+                    <label htmlFor="titulo">Título *</label>
+                    <input type="text"
+                      id="titulo"
+                      className="form-control form-control-sm"
+                      placeholder="Título"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+
+                </div>
+                <div className="form-row">
+
+                  <div className="col">
+                    <label htmlFor="subtitulo">Subtitulo *</label>
+                    <input type="text"
+                      id="subtitulo"
+                      placeholder="Subtitulo"
+                      className="form-control form-control-sm"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="col">
+                    <label htmlFor="fecha_publicacion">Fecha Publicación*</label>
+                    <input type="date"
+                      id="fecha_publicacion"
+                      format="YYYY-MM-DD"
+                      className="form-control form-control-sm"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+
+                </div>
+                <div className="form-row">
+                  <div className="col">
+                    <label htmlFor="autores">Autores</label>
+                    <select className="form-control form-control-sm" id="autores" name="autores[]" multiple onChange={this.handleChange}>
+                      {autores}
+                    </select>
+                  </div>
+                  <div className="col">
+                    <label htmlFor="categorias">Categorías</label>
+                    <select className="form-control form-control-sm" id="categorias" name="categorias[]" multiple onChange={this.handleChange}>
+                      {categorias}
+                    </select>
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="col">
+                    <label htmlFor="descripcion">Descripción*</label>
+                    <textarea
+                      id="descripcion"
+                      className="form-control form-control-sm"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+
+
+
+                  <div className="col">
+                    <label htmlFor="editorial">Editorial *</label>
+                    <select className="form-control form-control-sm" id="editorial" name="editorial" onChange={this.handleChange}>
+                      {editoriales}
+                    </select>
+                  </div>
+
+                </div>
+                <div className="form-row">
+                  <div className="col">
+                    <button className="btn btn-primary">Crear</button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-          <div className="input-field">
-            <label htmlFor="subtitulo">Subtitulo *</label>
-            <input type="text"
-              id="subtitulo"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="fecha_publicacion">Fecha Publicación*</label>
-            <input type="date"
-              id="fecha_publicacion"
-              format="YYYY-MM-DD"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="autores">autores</label>
-            <select id="autores" name="autores[]" multiple onChange={this.handleChange}>
-              {autores}
-            </select>
-          </div>
-          <div className="input-field">
-            <label htmlFor="descripcion">Descripción*</label>
-            <textarea
-              id="descripcion"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="categorias">Categorías</label>
-            <select id="categorias" name="categorias[]" multiple onChange={this.handleChange}>
-              {categorias}
-            </select>
-          </div>
-          <div className="input-field">
-            <label htmlFor="editorial">editorial *</label>
-            <select id="editorial" name="editorial" onChange={this.handleChange}>
-              {editoriales}
-            </select>
-          </div>
-          <div className="input-field">
-            <label htmlFor="imagen">Imagen</label>
-            <input type="file"
-              id="imagen" name="imagen"
-              accept="image/png, image/jpeg"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Crear</button>
-          </div>
-        </form>
-      </div>
+        </div>
+      </main>
     )
   }
 

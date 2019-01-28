@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
   componentDidMount() {
@@ -9,24 +9,30 @@ class Home extends Component {
   render() {
 
     let linksList = [
-      <li key="authors">
+      <li key="authors" className='list-group-item'>
         <Link to={`/authors`}>Autores</Link>
       </li>,
-      <li key="categories">
+      <li key="categories" className='list-group-item'>
         <Link to={"/categories"}>Categorías</Link>
       </li>,
-      <li key="editorials">
+      <li key="editorials" className='list-group-item'>
         <Link to={"/editorials"}>Editoriales</Link>
       </li>,
-      <li key="books">
+      <li key="books" className='list-group-item'>
         <Link to={"/books"}>Libros</Link>
       </li>,
     ]
 
     return (
-      <div className="links">
-        {linksList}
-      </div>
+
+      <main role="main" class="container">
+        <div class="jumbotron">
+          <h1>Entidades</h1>
+          <ul className='list-group'>
+            {linksList}
+          </ul>
+        </div>
+      </main>
     )
   }
 }

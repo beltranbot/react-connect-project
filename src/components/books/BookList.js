@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
   books_json_url,
   authors_json_url,
@@ -23,7 +23,7 @@ class BookList extends Component {
     query_categoria: ''
   }
 
-  async loadData () {
+  async loadData() {
     let response = await axios.get(books_json_url)
     let books = response.data
     response = await axios.get(authors_json_url)
@@ -102,7 +102,7 @@ class BookList extends Component {
 
       if (query_autor.length > 0) {
         if (!book.autores) {
-          result.push(false) 
+          result.push(false)
         } else {
           let local_result = autores.reduce(
             (a, c) => a || c.toLowerCase().includes(query_autor.toLowerCase()),
@@ -115,7 +115,7 @@ class BookList extends Component {
 
       if (query_categoria.length > 0) {
         if (!book.categorias) {
-          result.push(false) 
+          result.push(false)
         } else {
           let local_result = categorias.reduce(
             (a, c) => a || c.toLowerCase().includes(query_categoria.toLowerCase()),
@@ -126,7 +126,7 @@ class BookList extends Component {
         }
       }
 
-      return result.reduce((a,c) => a && c, true)
+      return result.reduce((a, c) => a && c, true)
     })
 
     this.setState({
@@ -136,7 +136,7 @@ class BookList extends Component {
       editorials
     })
   }
-  
+
   componentDidMount() {
     this.loadData()
   }
@@ -158,19 +158,23 @@ class BookList extends Component {
     let query_fecha_publicacion = ''
     let query_descripcion = ''
     let query_editorial = ''
+    let query_autor = ''
+    let query_categoria = ''
     this.setState({
       query_titulo,
       query_subtitulo,
       query_fecha_publicacion,
       query_descripcion,
       query_editorial,
+      query_autor,
+      query_categoria,
     })
     this.loadData()
   }
 
   render() {
     let books = []
-    let {authors, categories, editorials} = this.state
+    let { authors, categories, editorials } = this.state
     if (this.state.books.length !== 0) {
       books = this.state.books.map(book => {
 
@@ -213,88 +217,116 @@ class BookList extends Component {
     }
 
     return (
-      <div className="container">
-        <div>
-          <Link to={'/books/create'}>Nuevo Libro</Link>
-        </div>
-        <div>
-          <form id="query_form" className="white" onSubmit={this.handleSubmit}>
-            <h5 className="grey-text text-darken-3">Filtros de Busqueda</h5>
-            <div className="input-field">
-              <label htmlFor="query_titulo">Titulo</label>
-              <input type="text"
-                id="query_titulo"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="query_subtitulo">Subtitulo</label>
-              <input type="text"
-                id="query_subtitulo"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="query_fecha_publicacion">Fecha Publicación</label>
-              <input type="date"
-                id="query_fecha_publicacion"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="query_descripcion">Descripción</label>
-              <input type="text"
-                id="query_descripcion"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="query_editorial">Editorial</label>
-              <input type="text"
-                id="query_editorial"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="query_autor">Autor</label>
-              <input type="text"
-                id="query_autor"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="query_categoria">Categoría</label>
-              <input type="text"
-                id="query_categoria"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="input-field">
-                <button className="btn pink lighten-1 z-depth-0">Filtrar</button>
-            </div>          
-          </form>
-          <div className="input-field">
-              <button className="btn pink lighten-1 z-depth-0" onClick={this.handleResetFilters}>limpiar filtros</button>
+      <main role="main" class="container">
+        <div className="jumbotron">
+          <div>
+            <Link class="btn btn-primary" to={'/books/create'}>Nuevo Libro</Link>
           </div>
+
+          <div>
+            <form id="query_form" onSubmit={this.handleSubmit}>
+              <h5 className="grey-text text-darken-3">Filtros de Busqueda</h5>
+              <div className="form-row">
+                <div className="col">
+                  <label htmlFor="query_fecha_publicacion">Título</label>
+                  <input type="text"
+                    id="query_titulo"
+                    className="form-control form-control-sm"
+                    placeholder="Título"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="col">
+                  <label htmlFor="query_fecha_publicacion">Subtitulo</label>
+                  <input type="text"
+                    id="query_subtitulo"
+                    className="form-control form-control-sm"
+                    placeholder="subtitulo"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="col">
+                  <label htmlFor="query_fecha_publicacion">Fecha Publicación</label>
+                  <input type="date"
+                    id="query_fecha_publicacion"
+                    className="form-control form-control-sm"
+                    placeholder="Fecha Publicación"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="col">
+                  <label htmlFor="query_descripcion">Descripción</label>
+                  <input type="text"
+                    id="query_descripcion"
+                    placeholder="descripción"
+                    className="form-control form-control-sm"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="col">
+                  
+                  <label htmlFor="query_categoria">Categoría</label>
+                  <input type="text"
+                    id="query_categoria"
+                    placeholder="Categoría"
+                    className="form-control form-control-sm"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="col">
+                  <label htmlFor="query_autor">Autor</label>
+                  <input type="text"
+                    id="query_autor"
+                    placeholder='Autor'
+                    className="form-control form-control-sm"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="col">
+                  <label htmlFor="query_editorial">Editorial</label>
+                  <input type="text"
+                    id="query_editorial"
+                    placeholder="Editorial"
+                    className="form-control form-control-sm"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="col">
+                  <button className="btn btn-primary">Filtrar</button>
+                  <button className="btn btn-secondary" onClick={this.handleResetFilters}>limpiar filtros</button>
+                </div>  
+                <div className="col">
+                  
+                </div>
+              </div>
+            </form>
+          </div>
+          <table className="table table-hover">
+            <thead className="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Subtitulo</th>
+                <th>Fecha Publicación</th>
+                <th>Autor(es)</th>
+                <th>Categoría(s)</th>
+                <th>Descripción</th>
+                <th>Editorial</th>
+              </tr>
+            </thead>
+            <tbody>
+              {books}
+            </tbody>
+          </table>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Titulo</th>
-              <th>Subtitulo</th>
-              <th>Fecha Publicación</th>
-              <th>Autor(es)</th>
-              <th>Categoría(s)</th>
-              <th>Descripción</th>
-              <th>Editorial</th>
-            </tr>
-          </thead>
-          <tbody>
-            {books}
-          </tbody>
-        </table>
-      </div>
+      </main>
     )
   }
 

@@ -10,11 +10,14 @@ import EditorialCreate from './components/editorials/EditorialCreate'
 import BookList from './components/books/BookList'
 import BookCreate from './components/books/BookCreate'
 
+import Navbar from './components/layout/Navbar'
+
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
+          <Navbar/>
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/authors' component={AuthorList}/>

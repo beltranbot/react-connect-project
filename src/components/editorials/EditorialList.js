@@ -26,23 +26,24 @@ class EditorialList extends Component {
     })
 
     return (
-      <div className="container">
-        <div>
-          <Link to={'/editorials/create'}>Nueva Editorial</Link>
+      <main role="main" class="container">
+        <div className="jumbotron">
+          <div>
+            <Link class="btn btn-primary" to={'/editorials/create'}>Nueva Editorial</Link>
+          </div>
+          <table className="table table-hover">
+            <thead className="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+              </tr>
+            </thead>
+            <tbody>
+              {editorials}
+            </tbody>
+          </table>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {editorials}
-          </tbody>
-        </table>
-      </div>
+      </main>
     )
   }
 
