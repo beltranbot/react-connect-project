@@ -25,8 +25,8 @@ class Home extends Component {
 
     return (
 
-      <main role="main" class="container">
-        <div class="jumbotron">
+      <main role="main" className="container">
+        <div className="jumbotron">
           <h1>Entidades</h1>
           <ul className='list-group'>
             {linksList}

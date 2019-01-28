@@ -26,10 +26,10 @@ class CategoryList extends Component {
     })
 
     return (
-      <main role="main" class="container">
+      <main role="main" className="container">
         <div className="jumbotron">
           <div>
-            <Link class="btn btn-primary" to={'/categories/create'}>Nueva Categoría</Link>
+            <Link className="btn btn-primary" to={'/categories/create'}>Nueva Categoría</Link>
           </div>
           <table className="table table-hover">
             <thead className="thead-dark">

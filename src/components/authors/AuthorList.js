@@ -26,10 +26,10 @@ class AuthorList extends Component {
     })
 
     return (
-      <main role="main" class="container">
+      <main role="main" className="container">
         <div className="jumbotron">
           <div>
-            <Link class="btn btn-primary" to={'/authors/create'}>Nuevo Autor</Link>
+            <Link className="btn btn-primary" to={'/authors/create'}>Nuevo Autor</Link>
           </div>
           <table className="table table-hover">
             <thead className="thead-dark">

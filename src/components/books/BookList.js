@@ -217,10 +217,10 @@ class BookList extends Component {
     }
 
     return (
-      <main role="main" class="container">
+      <main role="main" className="container">
         <div className="jumbotron">
           <div>
-            <Link class="btn btn-primary" to={'/books/create'}>Nuevo Libro</Link>
+            <Link className="btn btn-primary" to={'/books/create'}>Nuevo Libro</Link>
           </div>
 
           <div>
